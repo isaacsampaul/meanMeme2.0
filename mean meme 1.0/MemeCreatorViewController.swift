@@ -132,6 +132,7 @@ class memeCreatorViewController: UIViewController,UINavigationControllerDelegate
         
         (UIApplication.shared.delegate as! AppDelegate).meme.append(Meme)
         self.saved = true
+        print("saved")
     }
     
     
@@ -141,6 +142,13 @@ class memeCreatorViewController: UIViewController,UINavigationControllerDelegate
         let sharedImage = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         self.present(sharedImage,animated: true,completion: nil)
         save()
+        sharedImage.completionHandler={(UIActivityType,completed:Bool) in
+            if (!completed) && (self.saved == true)
+            {
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+        }
         
     }
     
@@ -180,6 +188,12 @@ class memeCreatorViewController: UIViewController,UINavigationControllerDelegate
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
+    
+    @IBAction func cancel(_ sender: AnyObject) {
+     self.dismiss(animated: true, completion: nil)
+    }
+    
+
     
         }
 

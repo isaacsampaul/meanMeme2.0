@@ -24,4 +24,7 @@ class detailsViewController: UIViewController
         let sharedImage = UIActivityViewController(activityItems: [image1], applicationActivities: nil)
         self.present(sharedImage,animated: true,completion: nil)    }
 
+    @IBAction func cancel(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

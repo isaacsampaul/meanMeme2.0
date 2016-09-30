@@ -14,13 +14,17 @@ class sentMemeTabView: UITableViewController
     
     let controller: [meme] = (UIApplication.shared.delegate as! AppDelegate).meme
     
-        
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+        print("working")
+    }
+    
+   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return controller.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! sentMemeTabViewCell
         cell.memeImage.image = self.controller[indexPath.row].memedImage
@@ -29,12 +33,17 @@ class sentMemeTabView: UITableViewController
         
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "detailsViewController") as! detailsViewController
         controller.image = self.controller[indexPath.row].memedImage
-        self.present(controller, animated: true, completion: nil)
+        if let navigationcontroller = self.navigationController
+        {
+            navigationcontroller.pushViewController(controller, animated: true)
+        }
     }
+        
     
     
+        
        
 }

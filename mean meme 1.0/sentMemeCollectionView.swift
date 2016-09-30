@@ -33,5 +33,15 @@ class sentMemeCollectionView : UICollectionViewController
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "detailsViewController") as! detailsViewController
+        controller.image = self.controller[indexPath.row].memedImage
+        if let navigationcontroller = self.navigationController
+        {
+            navigationcontroller.pushViewController(controller, animated: true)
+        }
+
+    }
+    
     
 }
