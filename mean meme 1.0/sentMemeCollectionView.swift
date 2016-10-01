@@ -11,7 +11,7 @@ import UIKit
 
 class sentMemeCollectionView : UICollectionViewController
 {
-    let controller: [meme] = (UIApplication.shared.delegate as! AppDelegate).meme
+    var controller: [meme]! = nil
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
    
     override func viewWillAppear(_ animated: Bool) {
@@ -21,6 +21,9 @@ class sentMemeCollectionView : UICollectionViewController
         flowLayout.minimumLineSpacing = space
         flowLayout.minimumInteritemSpacing = space
         flowLayout.itemSize = CGSize(width: dimension1, height: dimension2)
+        
+        controller = (UIApplication.shared.delegate as! AppDelegate).meme
+        self.collectionView?.reloadData()
     }
     
    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
