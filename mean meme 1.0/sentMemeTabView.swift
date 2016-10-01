@@ -12,11 +12,11 @@ import UIKit
 class sentMemeTabView: UITableViewController
 {
     
-    let controller: [meme] = (UIApplication.shared.delegate as! AppDelegate).meme
+    var controller: [meme]! = nil
     
     override func viewWillAppear(_ animated: Bool) {
+        controller = (UIApplication.shared.delegate as! AppDelegate).meme
         self.tableView.reloadData()
-        print("working")
     }
     
    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -36,10 +36,7 @@ class sentMemeTabView: UITableViewController
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "detailsViewController") as! detailsViewController
         controller.image = self.controller[indexPath.row].memedImage
-        if let navigationcontroller = self.navigationController
-        {
-            navigationcontroller.pushViewController(controller, animated: true)
-        }
+        performSegue(withIdentifier: "detailsViewController" , sender: self)
     }
         
     

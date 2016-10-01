@@ -17,6 +17,7 @@ class detailsViewController: UIViewController
     
     override func viewWillAppear(_ animated: Bool) {
         self.imageView.image = image
+        print("working")
     }
     
     @IBAction func shareButton(_ sender: AnyObject) {

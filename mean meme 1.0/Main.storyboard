@@ -76,6 +76,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="Ybt-Rx-lNa" id="fME-uy-Uns"/>
+                        <segue destination="xkT-lW-HEW" kind="show" identifier="detailsViewController" id="zLY-2V-aU2"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zq-Wu-JQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -111,7 +112,7 @@
                                 <rect key="frame" x="0.0" y="69" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="mFP-bO-lWq" id="0yb-pt-1MJ">
-                                    <frame key="frameInset" width="375" height="149"/>
+                                    <frame key="frameInset" width="375" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Otm-xc-ZAU">
@@ -147,6 +148,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="xkT-lW-HEW" kind="show" identifier="detailsViewController" id="ysx-2I-GLx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rt-fe-T3k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,6 +160,7 @@
         <scene sceneID="y5d-4s-m1w">
             <objects>
                 <navigationController storyboardIdentifier="detailsViewNavigationCOntroller" id="xkT-lW-HEW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WB5-QA-oQC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kh6-Si-YvG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -168,7 +173,7 @@
             </objects>
             <point key="canvasLocation" x="-1794" y="468"/>
         </scene>
-        <!--Details View Controller-->
+        <!--Details View-->
         <scene sceneID="6w6-cH-OHj">
             <objects>
                 <viewController storyboardIdentifier="detailsViewController" id="RHk-j8-0Ff" customClass="detailsViewController" customModule="mean_meme_1_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -181,24 +186,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="REb-nO-hsw"/>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-Wr-PLH">
-                                <frame key="frameInset" minY="20" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Meme View" id="Oec-9W-8cB">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="Z3n-in-Zji">
-                                            <connections>
-                                                <action selector="shareButton:" destination="RHk-j8-0Ff" id="rip-7c-c4w"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="19g-pC-nNa">
-                                            <connections>
-                                                <action selector="cancel:" destination="RHk-j8-0Ff" id="svR-xe-9He"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -209,7 +196,18 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="eEs-5H-UKn"/>
+                    <navigationItem key="navigationItem" title="Details View" id="eEs-5H-UKn">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="uta-WJ-gh3">
+                            <connections>
+                                <action selector="shareButton:" destination="RHk-j8-0Ff" id="E5Y-Yx-qmn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="mdG-Cm-PzA">
+                            <connections>
+                                <action selector="cancel:" destination="RHk-j8-0Ff" id="0DL-4o-nll"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="REb-nO-hsw" id="Ibp-hz-3ms"/>
@@ -361,6 +359,7 @@
         <image name="Table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ysx-2I-GLx"/>
         <segue reference="y1m-Le-Hfj"/>
     </inferredMetricsTieBreakers>
 </document>
