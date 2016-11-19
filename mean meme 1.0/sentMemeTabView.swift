@@ -13,6 +13,7 @@ class sentMemeTabView: UITableViewController
 {
     
     var controller: [meme]! = nil
+    var selectedMeme: UIImage!
     
     override func viewWillAppear(_ animated: Bool) {
         controller = (UIApplication.shared.delegate as! AppDelegate).meme
@@ -34,12 +35,18 @@ class sentMemeTabView: UITableViewController
     }
     
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = self.storyboard?.instantiateViewController(withIdentifier: "detailsViewController") as! detailsViewController
-        controller.image = self.controller[indexPath.row].memedImage
+        self.selectedMeme = self.controller[indexPath.row].memedImage
         performSegue(withIdentifier: "detailsViewController" , sender: self)
     }
         
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailsViewController"
+        {
+            let nav = segue.destination as! UINavigationController
+            let controller = nav.topViewController as! detailsViewController
+            controller.image = self.selectedMeme
+        }
+    }
     
         
        

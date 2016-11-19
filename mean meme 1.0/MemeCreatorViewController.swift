@@ -132,7 +132,7 @@ class memeCreatorViewController: UIViewController,UINavigationControllerDelegate
         
         (UIApplication.shared.delegate as! AppDelegate).meme.append(Meme)
         self.saved = true
-        print("saved")
+
     }
     
     
